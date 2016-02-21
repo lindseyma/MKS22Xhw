@@ -29,6 +29,7 @@ public class KnightBoard{
 	}
 	System.out.println(num + " " + col + " " + row);
 	if(board[row][col] > 0){
+	    System.out.println("i'm here");
 	    return false;
 	}
 
