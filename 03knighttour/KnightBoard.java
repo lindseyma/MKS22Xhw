@@ -26,7 +26,7 @@ public class KnightBoard{
 	int numCols = board.length-1;
 	int numRows = board[0].length-1;
 	*/
-	if(num == board.length * board[0].length){
+	if(num == (board.length * board[0].length)+1){
 	    return true;
 	}
 
@@ -69,9 +69,12 @@ public class KnightBoard{
    
     public boolean check(int col, int row){
 	if(col < 0 ||
-	   col > board.length - 1 ||
+	   col + 1 > board.length ||
 	   row < 0 ||
-	   row > board[0].length-1){
+	   row + 1 > board[0].length){
+	    return false;
+	}
+	else if(board[col][row] != 0){
 	    return false;
 	}
 	else{
@@ -80,15 +83,18 @@ public class KnightBoard{
     }
     
     public boolean addKnight(int num, int row, int col){
+	//System.out.println(num);
 	//checks if in bounds
 	if(col < 0 ||
-	   col > board.length -1 ||
+	   col + 1 > board.length||
 	   row < 0 ||
-	   row > board[0].length - 1){
+	   row + 1 > board[0].length){
+	    System.out.println("checking for out of bound");
 	    return false;
 	}
 	//check if already a knight here
-	if (board[row][col] > 0){
+	if(board[col][row] > 0){
+	    System.out.println("test" + col + " " + row + " " + board[col][row]);
 	    return false;
 	}
 	//put the # on the board
