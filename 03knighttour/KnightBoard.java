@@ -32,7 +32,7 @@ public class KnightBoard{
 
 	System.out.println(num + " " + col + " " + row);
 
-	if(addKnight(num, row, col)){
+	if(addKnight(num, col, row)){
 	    num+=1;
 	    if(check(col+1, row-2)){
 		return solveH(num, col+1, row-2);
@@ -82,7 +82,7 @@ public class KnightBoard{
 	}
     }
     
-    public boolean addKnight(int num, int row, int col){
+    public boolean addKnight(int num, int col, int row){
 	//System.out.println(num);
 	//checks if in bounds
 	if(col < 0 ||
@@ -99,14 +99,14 @@ public class KnightBoard{
 	}
 	//put the # on the board
 	else{
-	    board[row][col] = num;
+	    board[col][row] = num;
 	    return true;
 	}
     }
 
     public void printSolution(){
 	for(int i=0; i<board.length; i++){
-	    for(int j=0; j<board.length; j++){
+	    for(int j=0; j<board[0].length; j++){
 		System.out.print(board[i][j]);
 		System.out.print("\t");
 	    }
