@@ -14,15 +14,21 @@ public class KnightBoard{
 	return solveH(1, 0, 0);
     }
 
+    /*
     int endPoint = board.length * board[0].length+1;
     int numCols = board.length - 1;
     int numRows = board[0].length - 1;
-
+    */
 
     public boolean solveH(int num, int col, int row){
-
-	if(num == endPoint){
+	/*
+	int endPoint = board.length * board[0].length+1;
+	int numCols = board.length-1;
+	int numRows = board[0].length-1;
+	*/
+	if(num == board.length * board[0].length){
 	    return true;
+	}
 
 	System.out.println(num + " " + col + " " + row);
 
@@ -58,16 +64,14 @@ public class KnightBoard{
 	    return false;
 	}
 
-	return false;
-      
-	}
     }
+    
    
     public boolean check(int col, int row){
 	if(col < 0 ||
-	   col > numCols ||
+	   col > board.length - 1 ||
 	   row < 0 ||
-	   row > numRows){
+	   row > board[0].length-1){
 	    return false;
 	}
 	else{
@@ -78,9 +82,9 @@ public class KnightBoard{
     public boolean addKnight(int num, int row, int col){
 	//checks if in bounds
 	if(col < 0 ||
-	   col > numCols ||
+	   col > board.length -1 ||
 	   row < 0 ||
-	   row > numRows){
+	   row > board[0].length - 1){
 	    return false;
 	}
 	//check if already a knight here
