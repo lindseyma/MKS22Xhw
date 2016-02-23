@@ -32,46 +32,46 @@ public class KnightBoard{
 
 	System.out.println(num + " " + col + " " + row);
 
-	if(addKnight(num, col, row)){
-	    num+=1;
-	    if(check(col+1, row-2)){
-		return solveH(num, col+1, row-2);
-	    }
-	    else if(check(col+2, row-1)){
-		return solveH(num, col+2, row-1);
-	    }
-	    else if(check(col+2, row+1)){
-		return solveH(num, col+2, row+1);
-	    }
-	    else if(check(col+1, row+2)){
-		return solveH(num, col+1, row+2);
-	    }
-	    else if(check(col-1, row+2)){
+	//addKnight(num, col, row);
+	//num+=1;
+	if(check(col+1, row-2)){
+	    return solveH(num, col+1, row-2);
+	}
+	else if(check(col+2, row-1)){
+	    return solveH(num, col+2, row-1);
+	}
+	else if(check(col+2, row+1)){
+	    return solveH(num, col+2, row+1);
+	}
+	else if(check(col+1, row+2)){
+	    return solveH(num, col+1, row+2);
+	}
+	else if(check(col-1, row+2)){
 		return solveH(num, col-1, row+2);
-	    }
-	    else if(check(col-2, row+1)){
-		return solveH(num, col-2, row+1);
-	    }
-	    else if(check(col-2, row-1)){
-		return solveH(num, col-2, row-1);
-	    }
-	    else{
-		return solveH(num, col-1, row-2);
-	    }
-	}//recursion
-	
+	}
+	else if(check(col-2, row+1)){
+	    return solveH(num, col-2, row+1);
+	}
+	else if(check(col-2, row-1)){
+	    return solveH(num, col-2, row-1);
+	}
+	else if(check(col-1, row-2)){
+	    return solveH(num, col-1, row-2);
+	}
+    //recursion
+    
 	else{
 	    return false;
 	}
-
     }
+
     
    
     public boolean check(int col, int row){
 	if(col < 0 ||
-	   col + 1 > board.length ||
+	   col + 1 > board[0].length ||
 	   row < 0 ||
-	   row + 1 > board[0].length){
+	   row + 1 > board.length){
 	    return false;
 	}
 	else if(board[col][row] != 0){
@@ -85,10 +85,10 @@ public class KnightBoard{
     public boolean addKnight(int num, int col, int row){
 	//System.out.println(num);
 	//checks if in bounds
-	if(col < 0 ||
-	   col + 1 > board.length||
+	/*	if(col < 0 ||
+	   col + 1 > board[0].length||
 	   row < 0 ||
-	   row + 1 > board[0].length){
+	   row + 1 > board.length){
 	    System.out.println("checking for out of bound");
 	    return false;
 	}
@@ -102,22 +102,26 @@ public class KnightBoard{
 	    board[col][row] = num;
 	    return true;
 	}
+	}*/
+	board[col][row]=num;
+	return true;
+
     }
 
     public void printSolution(){
-	for(int i=0; i<board.length; i++){
-	    for(int j=0; j<board[0].length; j++){
+	for(int i=0; i<board[0].length; i++){
+	    for(int j=0; j<board.length; j++){
 		System.out.print(board[i][j]);
 		System.out.print("\t");
 	    }
 	    System.out.print("\n");
 	}
     }
-
-public static void main(String[]args){
-    KnightBoard b = new KnightBoard(5);
-    b.solve();
-    b.printSolution();
-}
-
+    
+    public static void main(String[]args){
+	KnightBoard b = new KnightBoard(5);
+	b.solve();
+	b.printSolution();
     }
+    
+}
