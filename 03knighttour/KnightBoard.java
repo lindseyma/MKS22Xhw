@@ -11,61 +11,72 @@ public class KnightBoard{
     }
 
     public boolean solve(){
-	return solveH(1, 0, 0);
+	/*
+	for(int i=0; i<board.length; i++){
+	    for(int j=0; j<board[0].length; j++){
+		if(board[i][j]>=num){
+		    board[i][j] = 0;
+		}
+	    }
+	}
+	*/
+	int deltaX[] = {1, 2, 2, 1, -1, -2, -2, -2};
+	int deltaY[] = {-2, -2, 1, 2, 2, 1, -1, -2};
+
+	board[0][0] = 1;
+
+	if( solveH(1, 0, 0, deltaX, deltaY)){
+	    return true;
+	}
+	else{
+	    return false;
+	}
+	//int deltaX[] = {1, 2, 2, 1, -1, -2, -2, -1};
+	//int deltaY[] = {-2, -2, 1, 2, 2, 1, -1, -2};
     }
 
-    /*
-    int endPoint = board.length * board[0].length+1;
-    int numCols = board.length - 1;
-    int numRows = board[0].length - 1;
-    */
-
-    public boolean solveH(int num, int col, int row){
-	/*
-	int endPoint = board.length * board[0].length+1;
-	int numCols = board.length-1;
-	int numRows = board[0].length-1;
-	*/
+    public boolean solveH(int num, int col, int row, int deltaX[], int deltaY[]){
 	if(num == (board.length * board[0].length)+1){
 	    return true;
 	}
 
+	int currX; 
+	int currY;
+	/*
+	for(int i=0; i<board.length; i++){
+	    for(int j=0; j<board[0].length; j++){
+		if(board[i][j]>=num){
+		    board[i][j] = 0;
+		}
+	    }
+	}
+	*/
+	for(int a = 0; a < num; a++){
+	    currX = col + deltaX[a];
+	    currY = row + deltaY[a];
+	    if(check(currX, currY)){
+		addKnight(num, currX, currY);
+		if (solveH(num++, currX, currY, deltaX, deltaY)){
+		    return true;
+		}
+		else{
+		    board[currX][currY] = 0;
+		}
+	    }
+	}
+	//return false;
 	System.out.println(num + " " + col + " " + row);
-
-	//addKnight(num, col, row);
-	//num+=1;
-	if(check(col+1, row-2)){
-	    return solveH(num, col+1, row-2);
+	return false;
+	/*
+	if(check(col,row)){
+	    addKnight(num, col, row);
 	}
-	else if(check(col+2, row-1)){
-	    return solveH(num, col+2, row-1);
-	}
-	else if(check(col+2, row+1)){
-	    return solveH(num, col+2, row+1);
-	}
-	else if(check(col+1, row+2)){
-	    return solveH(num, col+1, row+2);
-	}
-	else if(check(col-1, row+2)){
-		return solveH(num, col-1, row+2);
-	}
-	else if(check(col-2, row+1)){
-	    return solveH(num, col-2, row+1);
-	}
-	else if(check(col-2, row-1)){
-	    return solveH(num, col-2, row-1);
-	}
-	else if(check(col-1, row-2)){
-	    return solveH(num, col-1, row-2);
-	}
-    //recursion
-    
 	else{
 	    return false;
-	}
+	}*/
+	
+    //recursion
     }
-
-    
    
     public boolean check(int col, int row){
 	if(col < 0 ||
@@ -120,7 +131,7 @@ public class KnightBoard{
     
     public static void main(String[]args){
 	KnightBoard b = new KnightBoard(5);
-	b.solve();
+	System.out.println(b.solve());
 	b.printSolution();
     }
     
