@@ -24,10 +24,10 @@ public class Bronze{
 		}
 	    }
 
-	    instrucs = new int[N][3];
+	    instructions = new int[N][3];
 	    for(int i=0; i<N; i++){
 		for(int j=0; j<3; j++){
-		    instrucs[i][j] = s.nextInt();
+		    instructions[i][j] = s.nextInt();
 		}
 	    }
 	}
@@ -70,7 +70,7 @@ public class Bronze{
     }//stomp
 
     public int calculate(){
-	int ans;
+	int ans=0;
 
 	for (int i=0; i<instructions.length; i++){
 	    stomp(instructions[i][0], instructions[i][1], instructions[i][2]);
