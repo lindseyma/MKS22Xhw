@@ -68,6 +68,7 @@ public class Maze{
             return solve(startx,starty);
         }
     }
+    //yes
 
     /*
       Recursive Solve function:
@@ -89,8 +90,7 @@ public class Maze{
             wait(20);
         }
 
-        //COMPLETE SOLVE
-        return false; //so it compiles
+        
     }
 
 
