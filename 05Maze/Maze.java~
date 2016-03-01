@@ -19,39 +19,8 @@ public class Maze{
       3. When the file is not found, print an error and exit the program.
     */
     public Maze(String filename, boolean ani){
-
-	animate = ani;
-	//set startX to neg for the check in solve method
-	startx = -1;
-
-        try{
-	    //scan lines into arraylist of strings for each line
-	    //then feed arraylist into 2d array of chars!! (maze)
-	    Scanner s = new Scanner(new File(filename));
-	    ArrayList<String> mazeLines  = new ArrayList<String>();
-	    while(s.hasNextLine()){
-		mazeLines.add(s.nextLine());
-	    }
-	    
-	    //set maze size to length of arraylist mazeLines
-	    maze = new char[mazeLines.size()][mazeLines.get(0).length()];
-
-	    //fill maze and look for the 'S'
-	    for(int col=0; col<mazeLines.size(); col ++){
-		String current = mazeLines.get(col);
-		for(int row = 0; row<current.length(); row++){
-		    maze[col][row] = current.charAt(row);
-		    if(current.charAt(row) == 'S'){
-			startx = row;
-			starty = col;
-		    }
-		}
-	    }
-	}
-	catch(FileNotFoundException e){
-	    System.out.println("File not found");
-	}
-    }//constructor
+        //COMPLETE CONSTRUCTOR
+    }
 
 
     /*Main Solve Function
