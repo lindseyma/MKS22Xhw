@@ -26,11 +26,12 @@ public class Maze{
 
         try{
 	    Scanner s = new Scanner(new File(filename));
-	    
+	    //System.out.println("does it reach here");
 	    String getC = s.nextLine();
 	    int cols = getC.length();
 	    int rows=1;
 	    while(s.hasNext()){
+		String current = s.nextLine();
 		rows++;
 	    }
 
@@ -88,7 +89,7 @@ public class Maze{
             System.out.println(this);
             wait(20);
         }
-
+	System.out.println("ayo");
 	//base case
         if(maze[x][y] == 'E'){
 	    return true;

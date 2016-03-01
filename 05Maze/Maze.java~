@@ -19,8 +19,38 @@ public class Maze{
       3. When the file is not found, print an error and exit the program.
     */
     public Maze(String filename, boolean ani){
-        //COMPLETE CONSTRUCTOR
-    }
+
+	animate = ani;
+	//set startX to neg for the check in solve method
+	startx = -1;
+
+        try{
+	    Scanner s = new Scanner(new File(filename));
+	    System.out.println("does it reach here");
+	    String getC = s.nextLine();
+	    int cols = getC.length();
+	    int rows=1;
+	    while(s.hasNext()){
+		rows++;
+	    }
+
+	    maze = new char[rows][cols];
+	    Scanner d = new Scanner(new File(filename));
+	    for(int i=0; i<rows; i++){
+		String line = d.nextLine();
+		for(int j=0; j<cols; j++){
+		    if(line.charAt(j) == 'S'){
+			startx=i;
+			starty=j;
+		    }
+		    maze[i][j] = line.charAt(j);
+		}
+	    }
+	}
+	catch(FileNotFoundException e){
+	    System.out.println("File not found");
+	}
+    }//constructor
 
 
     /*Main Solve Function
@@ -37,6 +67,7 @@ public class Maze{
             return solve(startx,starty);
         }
     }
+    //yes
 
     /*
       Recursive Solve function:
@@ -57,11 +88,52 @@ public class Maze{
             System.out.println(this);
             wait(20);
         }
+	System.out.println("ayo");
+	//base case
+        if(maze[x][y] == 'E'){
+	    return true;
+	}
 
-        //COMPLETE SOLVE
-        return false; //so it compiles
+	//set spot
+	else{
+	    maze[x][y] = '@';
+	}
+
+	if(check(x, y-1) && solve(x, y-1)){
+	    return true;
+	}
+
+	if(check(x, y+1) && solve(x, y+1)){
+	    return true;
+	}
+	
+	if(check(x+1, y) && solve(x+1, y)){
+	    return true;
+	}
+	
+	if(check(x-1, y) && solve(x-1, y)){
+	    return true;
+	}
+
+	maze[x][y] = '.';
+	return false;
+
     }
 
+    public boolean check(int x, int y){
+	if(maze[x][y] == '#'){
+	    return false;
+	}
+	else if(maze[x][y] == '.'){
+	    return false;
+	}
+	else if(maze[x][y] == '@'){
+	    return false;
+	}
+	else{
+	    return true;
+	}
+    }
 
     //FREE STUFF!!! *you should be aware of this*
 
