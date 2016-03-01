@@ -25,26 +25,25 @@ public class Maze{
 	startx = -1;
 
         try{
-	    //scan lines into arraylist of strings for each line
-	    //then feed arraylist into 2d array of chars!! (maze)
 	    Scanner s = new Scanner(new File(filename));
-	    ArrayList<String> mazeLines  = new ArrayList<String>();
-	    while(s.hasNextLine()){
-		mazeLines.add(s.nextLine());
-	    }
 	    
-	    //set maze size to length of arraylist mazeLines
-	    maze = new char[mazeLines.size()][mazeLines.get(0).length()];
+	    String getC = s.nextLine();
+	    int cols = getC.length();
+	    int rows=1;
+	    while(s.hasNext()){
+		rows++;
+	    }
 
-	    //fill maze and look for the 'S'
-	    for(int col=0; col<mazeLines.size(); col ++){
-		String current = mazeLines.get(col);
-		for(int row = 0; row<current.length(); row++){
-		    maze[col][row] = current.charAt(row);
-		    if(current.charAt(row) == 'S'){
-			startx = row;
-			starty = col;
+	    maze = new char[rows][cols];
+	    Scanner d = new Scanner(new File(filename));
+	    for(int i=0; i<rows; i++){
+		String line = d.nextLine();
+		for(int j=0; j<cols; j++){
+		    if(line.charAt(j) == 'S'){
+			startx=i;
+			starty=j;
 		    }
+		    maze[i][j] = line.charAt(j);
 		}
 	    }
 	}
@@ -90,9 +89,51 @@ public class Maze{
             wait(20);
         }
 
-        
+	//base case
+        if(maze[x][y] == 'E'){
+	    return true;
+	}
+
+	//set spot
+	else{
+	    maze[x][y] = '@';
+	}
+
+	if(check(x, y-1) && solve(x, y-1)){
+	    return true;
+	}
+
+	if(check(x, y+1) && solve(x, y+1)){
+	    return true;
+	}
+	
+	if(check(x+1, y) && solve(x+1, y)){
+	    return true;
+	}
+	
+	if(check(x-1, y) && solve(x-1, y)){
+	    return true;
+	}
+
+	maze[x][y] = '.';
+	return false;
+
     }
 
+    public boolean check(int x, int y){
+	if(maze[x][y] == '#'){
+	    return false;
+	}
+	else if(maze[x][y] == '.'){
+	    return false;
+	}
+	else if(maze[x][y] == '@'){
+	    return false;
+	}
+	else{
+	    return true;
+	}
+    }
 
     //FREE STUFF!!! *you should be aware of this*
 
