@@ -58,7 +58,7 @@ public class Silver{
 	    return pasture[R2][C2];
 	}
 
-	public void solveH(){
+	public int[][] solveH(){
 	    
 	    int[][]a = new int[pasture.length][pasture[0].length];
 
@@ -89,7 +89,7 @@ public class Silver{
 	    return ans;
 	}
 	
-	public void check(int x, int y){
+	public boolean check(int x, int y){
 	    if(x >= row || y>=col || x<0 || y<0 || pasture[x][y]<0){
 		return false;
 	    }
