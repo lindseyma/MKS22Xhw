@@ -67,9 +67,10 @@ public class Silver{
 		    if(pasture[i][j] != -1){//check if tree
 			a[i][j]=nextS(i,j);
 		    }
-		    return a;
 		}
 	    }
+
+	    return a;
 	}
 
 	public int nextS(int x, int y){
@@ -90,7 +91,7 @@ public class Silver{
 	}
 	
 	public boolean check(int x, int y){
-	    if(x >= row || y>=col || x<0 || y<0 || pasture[x][y]<0){
+	    if(x >= pasture.length || y>=pasture[0].length || x<0 || y<0 || pasture[x][y]<0){
 		return false;
 	    }
 	    return true;
