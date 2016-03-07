@@ -9,6 +9,8 @@ public class Silver{
     int C1;
     int C2;
     int time;
+    int rows;
+    int cols;
 
     //main
     public static void main(String[]args){
@@ -20,8 +22,8 @@ public class Silver{
     public Silver(String filename){
 	try{
 	    Scanner s = new Scanner(new File(filename));
-	    int rows = s.nextInt();
-	    int cols = s.nextInt();
+	    rows = s.nextInt();
+	    cols = s.nextInt();
 	    time = s.nextInt();
 	    pasture = new int[rows][cols];
 	    oldPast = new int[rows][cols];
@@ -53,7 +55,7 @@ public class Silver{
 	public int solve(){
 	    pasture[R1][C1] = 1;
 	    for(int i=0; i<time; i++){
-		solveH();
+		pasture = solveH();
 	    }//solve for
 	    return pasture[R2][C2];
 	}
@@ -67,9 +69,11 @@ public class Silver{
 		    if(pasture[i][j] != -1){//check if tree
 			a[i][j]=nextS(i,j);
 		    }
+		    else{
+			a[i][j] = -1;
+		    }
 		}
 	    }
-
 	    return a;
 	}
 
@@ -87,11 +91,13 @@ public class Silver{
 	    if(check(x-1,y)){
 		ans+=pasture[x-1][y];
 	    }
+	    //System.out.println(ans);
 	    return ans;
 	}
 	
 	public boolean check(int x, int y){
-	    if(x >= pasture.length || y>=pasture[0].length || x<0 || y<0 || pasture[x][y]<0){
+	    //System.out.println("Rows/cols" + rows + cols + "x/y" + x + y);
+	    if(x>=rows || y>=cols || x<0 || y<0 || pasture[x][y] < 0){
 		return false;
 	    }
 	    return true;
