@@ -117,17 +117,36 @@ public class Sorts{
 	int data2curr = 0;
 	int ansCurrent = 0;
 	
-	
+	//check that there are still #s left in arys
+	while(data1curr < data.length && data2curr < data2.length){
 	//compare numbers; add smaller one to array; add to the counter for that ary
-	if(data[data1curr] <= data2[data2curr]){
-	    ans[ansCurrent] = data[data1curr];
-	    data1curr++;
-	}
-	else{
-	    ans[ansCurrent] = data2[data2curr];
-	    data2curr++;
-	}
 
+	
+	    if(data[data1curr] <= data2[data2curr]){
+		ans[ansCurrent] = data[data1curr];
+		data1curr++;
+	    }//if for first ary
+	    else{
+		ans[ansCurrent] = data2[data2curr];
+		data2curr++;
+	    }//else for 2nd ary
+
+	}//while loop
+
+	if(data1.curr > data.length){
+	    for(int i=data2curr; i<data2.length; i++){
+		ans[ansCurrent] = data2[data1curr];
+		ansCurrent++;
+	    }//for
+	}//if
+
+	if(data2.curr > data2.length){
+	    for(int j = data1curr; j<data.length; j++){
+		ans[ansCurrent] = data[data1curr];
+		ansCurrent++;
+	    }//for
+	}//if
+    
     }
     
 }//Sorts
