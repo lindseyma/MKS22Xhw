@@ -27,13 +27,13 @@ public class Sorts{
 	}   
 	//insertionSort(test);
 	//bubbleSort(test);
-	mergesort(test);
+	//mergesort(test);
     }
 
-        public static void insertionSort(int[] myData){
-	    int x; //x is current number
-	    for(int i=1; i<myData.length; i++){
-		//1 because start w/ 2nd #
+    public static void insertionSort(int[] myData){
+	int x; //x is current number
+	for(int i=1; i<myData.length; i++){
+	    //1 because start w/ 2nd #
 		x=myData[i];
 		int j=i-1;
 		for (j=i-1; j>=0 && x < myData[j]; j--){
@@ -41,12 +41,12 @@ public class Sorts{
 		    //}//for j
 		    myData[j+1]=x;
 		}//for j
-	    }//for i
-	    for(int k=0; k<myData.length; k++){
-		System.out.print(myData[k]);
+	}//for i
+	for(int k=0; k<myData.length; k++){
+	    System.out.print(myData[k]);
 	    }//for k 
-	}
-	
+    }
+    
     public static void selectionSort(int[] myData){
 	for (int i=0; i<myData.length; i++){
 	    int x=myData[i]; //current least value
@@ -92,24 +92,28 @@ public class Sorts{
 	    return data;
 	}
 	//create arrays for each half of the ary
-	int t = data.length/2;
-	int[] left = new int[t];
-	int[] right = new int[data.length-t];
-
-	for(int i=0; i<left.length; i++){
-	    left[i]=data[i];
-	}
-
-	for(int j=t+1; j<right.length; j++){
-	    right[j] = data[j];
-	}
+	    int t = data.length/2;
+	    int[] left = new int[t];
+	    int[] right = new int[data.length-t];
+	    
+	    for(int i=0; i<left.length; i++){
+		left[i]=data[i];
+	    }
+	    
+	    for(int j=t+1; j<right.length; j++){
+		right[j] = data[j];
+	    }
 	
-    //mergesort both and then merge
-    return merge(mergesort(left), mergesort(right));
-    }
+	    //mergesort both and then merge
+	    return merge(mergesort(left), mergesort(right));
+	}
 
     private static int[] mergesort(int[] data){
 	mergesort(data, 0, data.length-1);
+	/*for(int i=0; i<data.length; i++){
+	    System.out.print(data[i] + " ");
+	}*/
+	return data;
     }
 	
     public static int[] merge(int[] data, int[] data2){
@@ -134,14 +138,14 @@ public class Sorts{
 
 	}//while loop
 
-	if(data1.curr > data.length){
+	if(data1curr > data.length){
 	    for(int i=data2curr; i<data2.length; i++){
 		ans[ansCurrent] = data2[data1curr];
 		ansCurrent++;
 	    }//for
 	}//if
 
-	if(data2.curr > data2.length){
+	if(data2curr > data2.length){
 	    for(int j = data1curr; j<data.length; j++){
 		ans[ansCurrent] = data[data1curr];
 		ansCurrent++;
