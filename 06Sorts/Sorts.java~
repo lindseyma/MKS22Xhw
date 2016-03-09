@@ -3,6 +3,8 @@ import java.util.Arrays;
 
 public class Sorts{
 
+    //static int[] test=new int[]{3,2,4,5};
+
     public static void fillRandom(int[] ary){
 	    int max=10000;
 	    Random num = new Random();
@@ -86,34 +88,9 @@ public class Sorts{
 	}//for i
     }//bubble
 
-    public static int[] mergesort(int[] data, int start, int end){
-	if (data.length == 1){
-	    return data;
-	}
-	//create arrays for each half of the ary
-	int t = data.length/2;
-	int[] left = new int[t];
-	int[] right = new int[data.length-t];
-
-	for(int i=0; i<left.length; i++){
-	    left[i]=data[i];
-	}
-
-	for(int j=t+1; j<right.length; j++){
-	    right[j] = data[j];
-	}
+    public static void mergeSort(int[] data){
 	
-    //mergesort both and then merge
-    return merge(mergesort(left), mergesort(right));
-    }
-
-    private static int[] mergesort(int[] data){
-	mergesort(data, 0, data.length-1);
-    }
-	
-    public static int[] merge(int[] data, int[] dataB){
-
-    }
+	    
     
 }//Sorts
    
