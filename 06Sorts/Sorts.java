@@ -18,15 +18,16 @@ public class Sorts{
     }
 
     public static void main(String[]args){
-	/*int size=5;
-	int max = 10;
+	int size=10;
+	int max = 20;
 	int[] test = new int[size];
 	Random num = new Random();
 	for(int i=0; i<size; i++){
 	    test[i]=num.nextInt(max);
 	}   
 	//insertionSort(test);
-	bubbleSort(test);*/
+	//bubbleSort(test);
+	mergesort(test);
     }
 
         public static void insertionSort(int[] myData){
@@ -111,8 +112,8 @@ public class Sorts{
 	mergesort(data, 0, data.length-1);
     }
 	
-    public static int[] merge(int[] data, int[] dataB){
-	int[]ans = new int[data.length + dataB.length];
+    public static int[] merge(int[] data, int[] data2){
+	int[]ans = new int[data.length + data2.length];
 	int data1curr = 0;
 	int data2curr = 0;
 	int ansCurrent = 0;
