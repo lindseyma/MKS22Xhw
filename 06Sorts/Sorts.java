@@ -112,6 +112,21 @@ public class Sorts{
     }
 	
     public static int[] merge(int[] data, int[] dataB){
+	int[]ans = new int[data.length + dataB.length];
+	int data1curr = 0;
+	int data2curr = 0;
+	int ansCurrent = 0;
+	
+	
+	//compare numbers; add smaller one to array; add to the counter for that ary
+	if(data[data1curr] <= data2[data2curr]){
+	    ans[ansCurrent] = data[data1curr];
+	    data1curr++;
+	}
+	else{
+	    ans[ansCurrent] = data2[data2curr];
+	    data2curr++;
+	}
 
     }
     
