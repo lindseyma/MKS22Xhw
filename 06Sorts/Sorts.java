@@ -146,7 +146,8 @@ public class Sorts{
 		ansCurrent++;
 	    }//for
 	}//if
-    
+	
+	return ans;
     }
     
 }//Sorts
