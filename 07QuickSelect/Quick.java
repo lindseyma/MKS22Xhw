@@ -2,6 +2,10 @@ import java.util.*;
 
     public class Quick{
 
+	public static String name(){
+	    return "7, Ma, Lindsey";
+	}
+
 	public static void main(String[]args){
 	    int[] data = new int[] {1, 3, 2, 9, 7, 4, 5, 6};
 	    System.out.println(quickSelect(data, 3));
@@ -15,17 +19,6 @@ import java.util.*;
 	    
 	    swap(data, randNum, right);
 	    
-	    /*int start = left +1;
-	      int end = right;
-	      while(start<end){
-	      if(data[start] < data[left]){
-	      swap(data, start, end);
-	      end--;
-	      else{
-	      start ++;
-	      }
-	    */
-
 	    for(int i=left; i<right; i++){
 		if(data[i] > data[right]){ //checks to see where to put curr num
 		    swap(data, i, left);
@@ -43,7 +36,6 @@ import java.util.*;
 	    return quickSelectOld(data, k, 0, data.length-1);
 	}
 
-	//helper func
 	public static int quickSelectOld(int[] data, int k, int left, int right){
 	    if(left <= right){
 		
