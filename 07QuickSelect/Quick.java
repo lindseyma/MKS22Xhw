@@ -1,7 +1,12 @@
 import java.util.*;
 
     public class Quick{
-	
+
+	public static void main(String[]args){
+	    int[] data = new int[] {1, 3, 2, 9, 7, 4, 5, 6};
+	    System.out.println(quickSelect(data, 3));
+	}
+
 	public static int partition(int[]data, int left, int right){
 	    
 	    int randNum = (int)(Math.random() * (right-left + 1 )) + left;
@@ -10,8 +15,19 @@ import java.util.*;
 	    
 	    swap(data, randNum, right);
 	    
+	    /*int start = left +1;
+	      int end = right;
+	      while(start<end){
+	      if(data[start] < data[left]){
+	      swap(data, start, end);
+	      end--;
+	      else{
+	      start ++;
+	      }
+	    */
+
 	    for(int i=left; i<right; i++){
-		if(data[i] < current){ //checks to see where to put curr num
+		if(data[i] > data[right]){ //checks to see where to put curr num
 		    swap(data, i, left);
 		    left++;
 		}//if
@@ -23,26 +39,29 @@ import java.util.*;
 	    return left;
 	}
 
-	public static int quickselect(int[] data, int k){
-	    return quickselect(data, k, 0, data.length-1);
+	public static int quickSelect(int[] data, int k){
+	    return quickSelect(data, k, 0, data.length-1);
 	}
 
 	//helper func
-	public static int quickselect(int[] data, int k, int left, int right){
-	    int a = partition(data, left, right);
-	    if(a == k){
-		return data[a];
-	    }
+	public static int quickSelect(int[] data, int k, int left, int right){
+	    if(left <= right){
+
+		int a = partition(data, left, right);
+		if(a == k){
+		    return data[a];
+		}
 	    
-	    if(a > k){
-		return quickselect(data, k, a, right);
+		if(a > k){
+		    return quickSelect(data, k, left, a-1);
+		}
+		
+		    return quickSelect(data, k, a + 1, right);
+		
+		
 	    }
-
-	    if(a <=  k){
-		return quickselect(data, k, left, a-1);
-	    }
-
-	    return quickselect(data, k, a, right);
+	    return 0;
+		
 	}
 
 	public static void swap(int[]data, int a, int b){
