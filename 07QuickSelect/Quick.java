@@ -7,7 +7,7 @@ import java.util.*;
 	    System.out.println(quickSelect(data, 3));
 	}
 
-	public static int partition(int[]data, int left, int right){
+	public static int partitionOld(int[]data, int left, int right){
 	    
 	    int randNum = (int)(Math.random() * (right-left + 1 )) + left;
 
@@ -39,28 +39,28 @@ import java.util.*;
 	    return left;
 	}
 
-	public static int quickSelect(int[] data, int k){
-	    return quickSelect(data, k, 0, data.length-1);
+	public static int quickSelectOld(int[] data, int k){
+	    return quickSelectOld(data, k, 0, data.length-1);
 	}
 
 	//helper func
-	public static int quickSelect(int[] data, int k, int left, int right){
+	public static int quickSelectOld(int[] data, int k, int left, int right){
 	    if(left <= right){
-
-		int a = partition(data, left, right);
+		
+		int a = partitionOld(data, left, right);
 		if(a == k){
 		    return data[a];
 		}
-	    
+		
 		if(a > k){
-		    return quickSelect(data, k, left, a-1);
+		    return quickSelectOld(data, k, left, a-1);
 		}
 		
-		    return quickSelect(data, k, a + 1, right);
-		
-		
+		return quickSelectOld(data, k, a + 1, right);
+		    
+		    
 	    }
-	    return 0;
+	    return "Error";
 		
 	}
 
@@ -69,5 +69,17 @@ import java.util.*;
 	    data[a] = data[b];
 	    data[b] = temp;
 	}
-				
+	
+	public static void quickSortOld(int[]data){
+	    sort(data, 0, data.length-1);
+	}
+
+	public static void quickSortOld(int[]data, int left, int right){
+	    if(right - left > 0){
+		int pivot = partitionOld(data, left, right);
+		QuickSortOld(data, left, pivot-1);
+		quickSortOld(data, pivot + 1, right);
+	    }
+	}
+	
     }
