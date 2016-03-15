@@ -12,12 +12,12 @@ import java.util.*;
 	    //System.out.println(quickSelect(data, 3));
 	    quickSort(data);
 	    printAry(data);
-	    for(int i=0; i<data.length-1; i++){
+	    /*for(int i=0; i<data.length-1; i++){
 		if(data[i+1] <= data[i]){
 		    System.out.println("t");
 		}
 		System.out.println("f");
-	    }
+		}*/
 	    }
 
 	/*	public static void main(String[]args){
@@ -69,7 +69,8 @@ import java.util.*;
 		}
 	    }
 	    swap(data, left, right);
-	    returnAry[0] = left;
+	    
+	    returnAry[0] = right;
 	    int ans=0;
 	    for(int i=left; i<data.length; i++){
 		if(data[i] == left){
@@ -77,10 +78,10 @@ import java.util.*;
 		}
 	    }
 	    returnAry[1] = ans;
-	    for(int i=0; i<returnAry.length; i++){
+	    /*for(int i=0; i<returnAry.length; i++){
 		System.out.print(returnAry[i] + " ");
-	    }
-	    System.out.println("\n");
+		}*/
+	    //System.out.println("\n");
 	    return returnAry;
 	}
 
