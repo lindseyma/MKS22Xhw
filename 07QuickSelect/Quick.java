@@ -70,14 +70,14 @@ import java.util.*;
 	    }
 	    swap(data, left, right);
 	    
-	    returnAry[0] = right;
+	    returnAry[0] = left;
 	    int ans=0;
 	    for(int i=left; i<data.length; i++){
 		if(data[i] == left){
 		    ans++;
 		}
 	    }
-	    returnAry[1] = ans;
+	    returnAry[1] = left+ans;
 	    /*for(int i=0; i<returnAry.length; i++){
 		System.out.print(returnAry[i] + " ");
 		}*/
@@ -139,7 +139,7 @@ import java.util.*;
 	    if(left < right){
 		int[]ary = partition(data, left, right);
 		quickSort(data, left, ary[0]-1);
-		quickSort(data, right, ary[1]+1);
+		quickSort(data, ary[1]+1, right);
 	    }
 	}
 	
