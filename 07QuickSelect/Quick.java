@@ -80,14 +80,11 @@ import java.util.*;
 	    returnAry[1] = left+ans;
 	    /*for(int i=0; i<returnAry.length; i++){
 		System.out.print(returnAry[i] + " ");
-		}*/
-	    //System.out.println("\n");
+		}
+	    System.out.println("\n");
+	    */
 	    return returnAry;
 	}
-
-	
-	  
-
 
 	public static int quickSelectOld(int[] data, int k){
 	    return quickSelectOld(data, k, 0, data.length-1);
@@ -139,7 +136,7 @@ import java.util.*;
 	    if(left < right){
 		int[]ary = partition(data, left, right);
 		quickSort(data, left, ary[0]-1);
-		quickSort(data, ary[1]+1, right);
+		quickSort(data, ary[1], right);
 	    }
 	}
 	
