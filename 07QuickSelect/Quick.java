@@ -133,7 +133,6 @@ import java.util.*;
 	}
 	
 	public static void quickSort(int[]data, int left, int right){  
-	    //if(left>=0 && right<data.length && right-left+1>1){
 	    if(left<right){
 		int[]ary = partition(data, left, right);
 		quickSort(data, left, ary[0]-1);
