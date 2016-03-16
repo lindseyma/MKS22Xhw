@@ -8,7 +8,7 @@ import java.util.*;
 
 	
 	public static void main(String[]args){
-	    int[] data = new int[] {1, 3, 2, 9, 7, 4, 5, 6};
+	    int[] data = new int[] {1, 3, 2, 3, 4, 5, 9, 7, 6};
 	    //System.out.println(quickSelect(data, 3));
 	    quickSort(data);
 	    printAry(data);
@@ -132,11 +132,12 @@ import java.util.*;
 	    quickSort(data, 0, data.length-1);
 	}
 	
-	public static void quickSort(int[]data, int left, int right){
-	    if(left < right){
+	public static void quickSort(int[]data, int left, int right){  
+	    //if(left>=0 && right<data.length && right-left+1>1){
+	    if(left<right){
 		int[]ary = partition(data, left, right);
 		quickSort(data, left, ary[0]-1);
-		quickSort(data, ary[1], right);
+		quickSort(data, ary[1]+1, right);
 	    }
 	}
 	
