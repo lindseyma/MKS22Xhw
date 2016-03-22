@@ -6,37 +6,37 @@ import java.util.*;
 	    return "7, Ma, Lindsey";
 	}
 
-	
+	/*
 	public static void main(String[]args){
 	    int[] data = new int[] {1, 3, 2, 3, 4, 5, 9, 7, 6};
 	    //System.out.println(quickSelect(data, 3));
 	    quickSort(data);
 	    printAry(data);
-	    /*for(int i=0; i<data.length-1; i++){
+	    for(int i=0; i<data.length-1; i++){
 		if(data[i+1] <= data[i]){
-		    System.out.println("t");
+		System.out.println("t");
 		}
 		System.out.println("f");
+		}
 		}*/
-	    }
-
-	/*	public static void main(String[]args){
+	
+	public static void main(String[]args){
 	    int[]a = new int[4000000];
-	    for(int i=0; i<a.length; i++){
-		a[i] = (int)(Math.random() * 3);
-	    }
-	    // Arrays.sort(a); 
-	    //quickSortOld(a);
-	    //   quickSort(a);
-	    for(int i=0; i<a.length; i++){
-		a[i] = (int)(Math.random()*Integer.MIN_VALUE);
-	    }
-
-	    //Arrays.sort(a);
-	    //quickSortOld(a);
-	    quickSort(a);
-	}*/
-
+		    for(int i=0; i<a.length; i++){
+			a[i] = (int)(Math.random() * 3);
+		    }
+		    // Arrays.sort(a); 
+	    //    quickSortOld(a);
+		    //   quickSort(a);
+		    for(int i=0; i<a.length; i++){
+			a[i] = (int)(Math.random()*Integer.MIN_VALUE);
+		    }
+		    
+		    //Arrays.sort(a);
+		    //quickSortOld(a);
+		    quickSort(a);
+	}
+	
 	public static int partitionOld(int[]data, int left, int right){
 	    
 	    int randNum = (int)(Math.random() * (right-left + 1 )) + left;
