@@ -1,19 +1,38 @@
 public class MyLinkedList{
     
-    LNode start;
+    LNode head;
     int size;
    
     public void add(int value){
-	size++;
-	
+	if(head == null){
+	    head = new LNode(value);
+	}
+	else{
+	    LNode p = head;
+	    while(p.getNext()!=null){
+		p=p.getNext();
+	    }
+	    p.setNext(new LNode(value));
+	}
+	size +=1;
+	return true;
     }
 
     public String toString(){
-	
+	String ans = "[";
+	LNode p = head;
+	while(p != null){
+	    ans+= p.getValue();
+	    if(p.getNext() != null){
+		ans+= ", ";
+	    }
+	    p = p.getNext();
+	}
+	return ans + "]";
     }
 
-    public int get(int index){
-	
+    public int size(){
+	return size;
     }
 
     public class LNode{
