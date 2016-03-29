@@ -1,4 +1,4 @@
-public class MyLinkedList<T>{
+public class MyLinkedList<T> implements Iterable<T>{
     
     LNode head;
     int size;
@@ -118,6 +118,40 @@ public class MyLinkedList<T>{
 	    }
 	}
     }
+
+    public Iterator<T> iterator(){
+	return new iter();
+    }
+    
+    private class iter implements Iterator<T>{
+	LNode a;
+	
+	public iter(){
+	    a = head;
+	}
+	
+	public boolean hasNext(){
+	    if(next != null){
+		return true;
+	    }
+	    else{
+		return false;
+	    }
+	}//hasNext
+	
+	public T next(){
+	    if(!hasNext()){
+		throw new NoSuchElementException();
+	    }
+	    T ret = next.getValue();
+	    next = next.getNext();
+	    return value;
+	}
+	
+	public void remove(){
+	    throw new UnsupportedOperationException();
+	}
+    }//iter
 
     ////////////////////////////////////////////////////////////////////////////////////////
     
