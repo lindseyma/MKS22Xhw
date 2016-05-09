@@ -49,28 +49,13 @@ public class MyHeap<T extends Comparable<T>>
                      -data is a valid heap
 	**/
     private void pushUp(int k){
-	if(data[k].compareTo(data[k/2]>0)){
-	    swap(k, k/2);
-	    pushUp(k);
-	}
-    }//pushUp   
+	if(k > 1){
+	    if(data[k].compareTo(data[k/2]
 
-    private void heapify(){
-	for(int i=size/2; i>0; i--){
-	    pushDown(i);
-	}
-    }//heapify?? idk if this is it
 
-    public T delete(){
-	T ans = data[1];
-	swap(1, size);
-	data[size] = null;
-	size--;
-	pushDown(1);
-	return ans;
-    }
-
-    public void add(T x)
+	private void heapify()
+	public T delete()
+	public void add(T x)
 	private void doubleSize()
 	public String toString()
 
