@@ -1,13 +1,14 @@
 import java.util.*;
 @SuppressWarnings("unchecked")
-public class MyHeap<T extends Comparable<T>>
-{
+    
+    public class MyHeap<T extends Comparable<T>>{
+
     private int size;
     private T[] data;
 
     public MyHeap(){
 	size = 0;
-	isMax = true;
+	//isMax = true;
 	data = (T[]) new Comparable[6];
     }
 
@@ -15,7 +16,7 @@ public class MyHeap<T extends Comparable<T>>
 	size = array.length;
 	data = (T[])new Comparable[size+1];
 	data[0] = null;
-	isMax = true;
+	//isMax = true;
 	for(int i=1; i<size+1; i++){
 	    data[i] = array[i-1];
 	}
@@ -59,9 +60,12 @@ public class MyHeap<T extends Comparable<T>>
 	for(int i=size/2; i>0; i--){
 	    pushDown(i);
 	}
-    }//heapify?? idk if this is it
+    }//heapify
 
     public T delete(){
+	if(size == 0){
+	    throw new NoSuchElementException;
+	}
 	T ans = data[1];
 	swap(1, size);
 	data[size] = null;
@@ -70,12 +74,30 @@ public class MyHeap<T extends Comparable<T>>
 	return ans;
     }
 
-    public void add(T x)
-	private void doubleSize()
-	public String toString()
+    public T peek(){
+	return data[1];
+    }
+	
+    public void add(T x){
+    }
+    
+    private void doubleSize(){
+	T[] data2 = (T[]) new Comparable[size*2];
+	for(int i=1; i<size-1; i++){
+	    data2[i] = data[i];
+	}
+    }
 
-	//do this last
-	public MyHeap(boolean isMax)
+    public String toString(){
+	for(int i=1; i<size-1; i++){
+	    System.out.println(data[i]);
+	}
+    }//toString
+    
+    //do this last
+    public MyHeap(boolean isMax){
+	
+	
 	public MyHeap(T[] array, boolean isMax)
 
 	}
